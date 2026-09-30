@@ -7,6 +7,43 @@
   var root = document.documentElement;
   root.classList.remove("no-js");
 
+  /* ---------- Yorugʻ / qorongʻu rejim ---------- */
+  var themeToggle = document.querySelector(".theme-toggle");
+  var darkQuery = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+
+  function storedTheme() {
+    try { return localStorage.getItem("theme"); } catch (e) { return null; }
+  }
+
+  function applyTheme(theme) {
+    root.setAttribute("data-theme", theme);
+    if (themeToggle) {
+      var dark = theme === "dark";
+      themeToggle.setAttribute("aria-pressed", String(dark));
+      themeToggle.setAttribute("aria-label", dark ? "Yorugʻ rejimga oʻtish" : "Qorongʻu rejimga oʻtish");
+    }
+  }
+
+  var saved = storedTheme();
+  applyTheme(saved === "light" || saved === "dark" ? saved : (darkQuery && darkQuery.matches ? "dark" : "light"));
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", function () {
+      var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(next);
+      try { localStorage.setItem("theme", next); } catch (e) { /* saqlab boʻlmasa ham ishlayveradi */ }
+    });
+  }
+
+  // Foydalanuvchi oʻzi tanlamagan boʻlsa, tizim sozlamasi oʻzgarishini kuzatamiz
+  if (darkQuery) {
+    var onSystemChange = function (e) {
+      if (!storedTheme()) applyTheme(e.matches ? "dark" : "light");
+    };
+    if (darkQuery.addEventListener) darkQuery.addEventListener("change", onSystemChange);
+    else if (darkQuery.addListener) darkQuery.addListener(onSystemChange);
+  }
+
   /* ---------- Header soyasi va "yuqoriga" tugmasi ---------- */
   var header = document.querySelector(".site-header");
   var toTop = document.querySelector(".to-top");
