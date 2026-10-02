@@ -6,6 +6,8 @@
 
   var root = document.documentElement;
   var DATA = window.ABERNO;
+  var I18N = window.I18N;
+  var T = I18N.t;
   var $ = function (sel, ctx) { return (ctx || document).querySelector(sel); };
   var $$ = function (sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); };
   var esc = function (s) {
@@ -30,7 +32,8 @@
     tg: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.94 4.32 18.76 19.3c-.24 1.06-.86 1.32-1.75.82l-4.84-3.57-2.33 2.25c-.26.26-.48.48-.97.48l.35-4.93 8.97-8.1c.39-.35-.08-.54-.6-.2L6.5 13.03l-4.77-1.5c-1.04-.32-1.06-1.04.22-1.54L20.6 2.8c.86-.32 1.62.2 1.34 1.52Z"/></svg>',
     ig: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.25-3.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z"/></svg>',
     globe: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.800 3 2.800 15 0 18M12 3c-2.800 3-2.800 15 0 18"/></svg>',
-    moon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.6 8.6 0 0 1 9.8 3.5a8.6 8.6 0 1 0 10.7 10.7Z"/></svg>'
+    moon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.6 8.6 0 0 1 9.8 3.5a8.6 8.6 0 1 0 10.7 10.7Z"/></svg>',
+    motion: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6.5h10v2H3v-2Zm4 4.5h14v2H7v-2Zm-4 4.5h10v2H3v-2Z"/></svg>'
   };
 
   function logo(color) {
@@ -123,6 +126,21 @@
     var header = $("[data-header]");
     if (!header) return;
     header.innerHTML =
+      '<div class="topbar">' +
+        '<nav class="topbar__brands" aria-label="Brendlar">' +
+          '<a href="bulut.html">Bulut</a><a href="margaritto.html">Margaritto</a><a href="smaylo.html">Smaylo</a></nav>' +
+        '<div class="topbar__tools">' +
+          '<button class="toggle" type="button" data-toggle="motion" aria-pressed="false" aria-label="Harakatni kamaytirish">' +
+            '<span class="toggle__track" aria-hidden="true"></span>' + ICON.motion + '<span class="toggle__label">Harakatni kamaytirish</span></button>' +
+          '<button class="toggle" type="button" data-toggle="theme" aria-pressed="false" aria-label="Qorongʻu rejim">' +
+            '<span class="toggle__track" aria-hidden="true"></span>' + ICON.moon + '<span class="toggle__label">Qorongʻu rejim</span></button>' +
+          '<div class="lang" role="group" aria-label="Til" data-no-i18n>' +
+            I18N.langs.map(function (l) {
+              return '<button class="lang__btn" type="button" data-lang="' + l + '" lang="' + l + '" aria-pressed="' + (l === I18N.lang) + '" title="' + I18N.names[l] + '">' + l.toUpperCase() + "</button>";
+            }).join("") +
+          "</div>" +
+        "</div>" +
+      "</div>" +
       '<div class="hdr">' +
         '<button class="hdr__btn" type="button" data-open="menu" aria-haspopup="dialog" aria-expanded="false">' +
           '<span class="hdr__bars" aria-hidden="true"><i></i><i></i></span><span>Menyu</span></button>' +
@@ -214,15 +232,14 @@
         '<a class="pcard__link" href="' + p.url + '" aria-label="' + esc(p.title + " — " + p.desc) + '"></a>' +
         '<button class="fav" type="button" data-fav="' + p.id + '" aria-pressed="false" aria-label="Tanlanganlarga qoʻshish">' + ICON.heart + "</button>" +
         '<figure class="pcard__fig"><img src="' + p.thumb + '" alt="" loading="lazy" width="840" height="350"></figure>' +
-        '<div class="pcard__text"><h3 class="pcard__name">' + esc(p.name) + '</h3><p class="pcard__desc">' + esc(p.desc) + "</p></div>" +
+        '<div class="pcard__text"><p class="pcard__brand">' + (p.label || DATA.brands[p.brand].name) + '</p><h3 class="pcard__name">' + esc(p.name) + '</h3><p class="pcard__desc">' + esc(p.desc) + "</p></div>" +
         "</li>";
     }
     var leaf = p.brand === "pandoozy";
     return '<li class="pcard">' +
       '<a class="pcard__link" href="' + p.url + '" aria-label="' + esc(p.title + (p.desc ? " — " + p.desc : "")) + '"></a>' +
       '<button class="fav" type="button" data-fav="' + p.id + '" aria-pressed="false" aria-label="Tanlanganlarga qoʻshish">' + ICON.heart + "</button>" +
-      '<div class="pcard__text"><h3 class="pcard__name">' + esc(p.name) + '</h3><p class="pcard__desc">' + esc(p.desc) + "</p></div>" +
-      (leaf ? '<p class="pcard__tag">PanDoozy</p>' : "") +
+      '<div class="pcard__text"><p class="pcard__brand">' + (p.label || DATA.brands[p.brand].name) + '</p><h3 class="pcard__name">' + esc(p.name) + '</h3><p class="pcard__desc">' + esc(p.desc) + "</p></div>" +
       '<figure class="pcard__fig sky' + (leaf ? " sky--leaf" : "") + '"><img class="feather" src="' + p.thumb + '" alt="" loading="lazy" width="440" height="440"></figure>' +
       "</li>";
   }
@@ -257,7 +274,9 @@
     // "o'", "oʻ", "o`" kabi turli yozilishlar bir xil topilishi uchun
     var norm = function (s) { return s.toLowerCase().replace(/[ʻʼ'`’‘]/g, "").replace(/\s+/g, " ").trim(); };
     var index = DATA.products.map(function (p) {
-      return { p: p, text: norm([p.title, p.variant, p.desc, DATA.catById[p.cat].name, DATA.brands[p.brand].name].join(" ")) };
+      // Tanlangan tildagi nomlar ham qidiruvga kiradi
+      var words = [p.title, p.variant, p.desc, DATA.catById[p.cat].name, DATA.brands[p.brand].name];
+      return { p: p, text: norm(words.concat(words.map(T)).join(" ")) };
     });
 
     input.addEventListener("input", function () {
@@ -284,6 +303,8 @@
     var main = contacts.social[0];
     footer.innerHTML =
       '<div class="ft__logo">' + logo() + '<div class="ft__word">ABERNO<small>GROUP</small></div></div>' +
+      '<nav class="ft__brands" aria-label="Brendlar">' +
+        '<a href="bulut.html">Bulut</a><a href="margaritto.html">Margaritto</a><a href="smaylo.html">Smaylo</a><a href="pandoozy.html">PanDoozy</a></nav>' +
       '<div class="ft__share"><span>Bizni kuzating</span><ul>' +
         '<li><a href="https://t.me/' + main.tg + '" target="_blank" rel="noopener" aria-label="Aberno Telegram kanali">' + ICON.tg + "</a></li>" +
         '<li><a href="https://instagram.com/' + main.ig + '" target="_blank" rel="noopener" aria-label="Aberno Instagram sahifasi">' + ICON.ig + "</a></li>" +
@@ -319,10 +340,11 @@
           "</div>" +
         "</nav>" +
         '<div class="ft__prefs">' +
-          '<span class="ft__region">' + ICON.globe + "Oʻzbekiston: Oʻzbekcha</span>" +
-          '<div class="ft__toggles">' +
-            '<button class="toggle" type="button" data-toggle="motion" aria-pressed="false"><span class="toggle__track" aria-hidden="true"></span>Harakatni kamaytirish</button>' +
-            '<button class="toggle" type="button" data-toggle="theme" aria-pressed="false"><span class="toggle__track" aria-hidden="true"></span>Qorongʻu rejim</button>' +
+          '<span class="ft__region">' + ICON.globe + "<span>Oʻzbekiston</span></span>" +
+          '<div class="lang lang--names" role="group" aria-label="Til" data-no-i18n>' +
+            I18N.langs.map(function (l) {
+              return '<button class="lang__btn" type="button" data-lang="' + l + '" lang="' + l + '" aria-pressed="' + (l === I18N.lang) + '">' + I18N.names[l] + "</button>";
+            }).join("") +
           "</div>" +
         "</div>" +
         '<div class="ft__legal"><span>© ' + new Date().getFullYear() + " Aberno Group. Barcha huquqlar himoyalangan.</span>" +
@@ -415,7 +437,9 @@
     var stage = $(".hero__stage", hero);
     var shade = $(".hero__shade", hero);
     var text = $(".hero__text", hero);
-    var slides = $$(".hero__slides img", hero);
+    var slides = $$(".hero__slide", hero);
+    var copies = $$(".hero__copy", hero);
+    var dots = $$(".hero__dot", hero);
 
     var ticking = false;
     function update() {
@@ -429,15 +453,21 @@
     }, { passive: true });
     update();
 
-    if (slides.length > 1) {
-      var i = 0;
-      setInterval(function () {
-        if (reducedMotion() || document.hidden) return;
-        slides[i].classList.remove("is-on");
-        i = (i + 1) % slides.length;
-        slides[i].classList.add("is-on");
-      }, 5200);
+    // Uch brend navbat bilan koʻrsatiladi; nuqtalar orqali qoʻlda ham almashtiriladi
+    var current = 0;
+    var paused = false;
+    function show(i) {
+      current = (i + slides.length) % slides.length;
+      slides.forEach(function (s, k) { s.classList.toggle("is-on", k === current); });
+      copies.forEach(function (c, k) { c.classList.toggle("is-on", k === current); c.setAttribute("aria-hidden", String(k !== current)); });
+      dots.forEach(function (d, k) { d.setAttribute("aria-pressed", String(k === current)); });
     }
+    dots.forEach(function (d, k) { d.addEventListener("click", function () { paused = true; show(k); }); });
+    show(0);
+    setInterval(function () {
+      if (paused || reducedMotion() || document.hidden || window.scrollY > stage.offsetHeight * 0.5) return;
+      show(current + 1);
+    }, 6000);
   }
 
   /* ==========================================================
@@ -507,10 +537,11 @@
         : state.brand ? DATA.brands[state.brand].name
         : "Barcha mahsulotlar";
       head.innerHTML = '<p class="eyebrow eyebrow--lg">' + (favView ? "Sizning tanlovingiz" : "Aberno mahsulotlari") + '</p><h1 class="h100">' + title + "</h1>";
-      document.title = title + " — Aberno Group";
+      document.title = T(title + " — Aberno Group");
     }
 
     var grid = $("[data-grid]", host);
+    var chipsEl = $("[data-chips]", host);
     var countEl = $("[data-count]", host);
     var moreEl = $("[data-more]", host);
     var emptyEl = $("[data-empty]", host);
@@ -557,6 +588,13 @@
       }));
       var sortOpts = Object.keys(SORTS).map(function (k) { return { value: k, label: SORTS[k].label }; });
       var any = state.cat || state.brand || state.ply;
+
+      if (chipsEl) {
+        chipsEl.innerHTML = brandOpts.map(function (o) {
+          return '<button class="chip" type="button" data-set="brand" data-value="' + o.value + '" aria-pressed="' + (o.value === state.brand) + '">' +
+            (o.value ? o.label : "Barchasi") + "</button>";
+        }).join("");
+      }
 
       filtersEl.innerHTML =
         filterMenu("cat", "Kategoriya", catOpts) +
@@ -669,13 +707,9 @@
     var tone = p.brand === "pandoozy" ? " sky--leaf" : "";
     var ask = "contact.html?mavzu=mahsulot&mahsulot=" + p.id;
 
-    document.title = p.title + (p.desc ? ", " + p.desc : "") + " — Aberno Group";
+    document.title = T(p.title) + (p.desc ? ", " + T(p.desc) : "") + " — Aberno Group";
     var meta = $('meta[name="description"]');
-    if (meta) {
-      meta.setAttribute("content", p.photo
-        ? p.title + ". " + p.desc + ". " + p.text[0]
-        : p.title + ". " + [p.desc, p.comp].filter(Boolean).join(". ") + ". Aberno Group katalogi, № " + p.n + ".");
-    }
+    if (meta) meta.setAttribute("content", [p.title, p.desc, p.photo ? p.text[0] : p.comp].filter(Boolean).map(T).join(". ").replace(/\.$/, "") + ".");
 
     var same = DATA.products.filter(function (o) { return o.id !== p.id && o.name === p.name && o.brand === p.brand; });
     var others = DATA.products.filter(function (o) { return o.id !== p.id && o.cat === p.cat && same.indexOf(o) === -1; });
@@ -856,7 +890,7 @@
     var subject = params.get("mavzu");
     if (subject && $('option[value="' + subject.replace(/"/g, "") + '"]', form.elements.subject)) form.elements.subject.value = subject;
     var asked = DATA.byId[params.get("mahsulot")];
-    if (asked) form.elements.message.value = "Mahsulot: " + asked.title + (asked.desc ? " (" + asked.desc + ")" : "") + ", katalog № " + asked.n + ".\n";
+    if (asked) form.elements.message.value = T("Mahsulot") + ": " + T(asked.title) + (asked.desc ? " (" + T(asked.desc) + ")" : "") + ".\n";
 
     var rules = {
       name: function (v) { return v.trim().length >= 2 || "Ismingizni kiriting"; },
@@ -914,6 +948,8 @@
   applyTheme(root.getAttribute("data-theme") || "light");
   applyMotion(store("motion") === "reduce");
   document.addEventListener("click", function (e) {
+    var langBtn = e.target.closest("[data-lang]");
+    if (langBtn) { I18N.set(langBtn.getAttribute("data-lang")); return; }
     var t = e.target.closest("[data-toggle]");
     if (!t) return;
     if (t.getAttribute("data-toggle") === "theme") toggleTheme();
@@ -926,4 +962,5 @@
 
   favs.sync();
   setupReveal();
+  I18N.start();
 })();

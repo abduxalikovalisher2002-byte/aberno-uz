@@ -9,9 +9,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;700;800&display=swap" rel="stylesheet">
-  <script>(function(){var d=document.documentElement,t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}d.setAttribute("data-theme",t);d.classList.add("js")})();</script>
+  <script>(function(){var d=document.documentElement,t,l;try{t=localStorage.getItem("theme");l=localStorage.getItem("lang")}catch(e){}var q=/[?&]lang=(uz|ru|en)\b/.exec(location.search);if(q)l=q[1];if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}d.setAttribute("data-theme",t);d.classList.add("js");if(l==="ru"||l==="en"){d.classList.add("i18n-pending");setTimeout(function(){d.classList.remove("i18n-pending")},3000)}})();</script>
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/i18n-dict.js" defer></script>
+  <script src="assets/js/i18n.js" defer></script>
+  <script src="assets/js/chat.js" defer></script>
   <script src="assets/js/main.js" defer></script>
 </head>
 <body>
@@ -20,46 +23,65 @@
 
   <main>
     <section class="hero">
-      <div class="hero__stage sky">
-        <div class="hero__slides" aria-hidden="true">
-          <img class="feather is-on" src="assets/img/products/b06.jpg" alt="" width="900" height="900" fetchpriority="high">
-          <img class="feather" src="assets/img/products/t02.jpg" alt="" width="900" height="900" loading="lazy">
-          <img class="feather" src="assets/img/products/w01.jpg" alt="" width="900" height="900" loading="lazy">
-          <img class="feather" src="assets/img/products/h04.jpg" alt="" width="900" height="900" loading="lazy">
+      <div class="hero__stage">
+        <div class="hero__slide sky is-on" aria-hidden="true">
+          <img class="feather" src="assets/img/products/b06.jpg" alt="" width="900" height="900" fetchpriority="high">
+        </div>
+        <div class="hero__slide hero__slide--photo" aria-hidden="true">
+          <img src="assets/img/hero-margaritto.jpg" alt="" loading="lazy">
+        </div>
+        <div class="hero__slide hero__slide--photo" aria-hidden="true">
+          <img src="assets/img/hero-smaylo.jpg" alt="" loading="lazy">
         </div>
         <div class="hero__text">
-          <p class="eyebrow">Aberno Group</p>
-          <h1 class="h100">Bulut</h1>
-          <a class="btn btn--glass" href="bulut.html">Batafsil</a>
+          <div class="hero__copy is-on">
+            <p class="eyebrow">Qogʻoz mahsulotlari</p>
+            <h1 class="h100">Bulut</h1>
+            <a class="btn btn--glass" href="bulut.html">Batafsil</a>
+          </div>
+          <div class="hero__copy">
+            <p class="eyebrow">Margarin</p>
+            <p class="h100">Margaritto</p>
+            <a class="btn btn--glass" href="margaritto.html">Batafsil</a>
+          </div>
+          <div class="hero__copy">
+            <p class="eyebrow">Spred</p>
+            <p class="h100">Smaylo</p>
+            <a class="btn btn--glass" href="smaylo.html">Batafsil</a>
+          </div>
         </div>
-        <span class="hero__arrow" aria-hidden="true"></span>
+        <div class="hero__dots">
+          <button class="hero__dot" type="button" aria-pressed="true" aria-label="Bulut"></button>
+          <button class="hero__dot" type="button" aria-pressed="false" aria-label="Margaritto"></button>
+          <button class="hero__dot" type="button" aria-pressed="false" aria-label="Smaylo"></button>
+        </div>
         <div class="hero__shade"></div>
       </div>
 
       <div class="roller">
         <ul class="roller__list">
           <li>
-            <a class="mcard" href="products.html">
-              <img class="mcard__img" src="assets/img/cover.jpg" alt="" loading="lazy">
-              <div class="mcard__text"><p class="eyebrow">Yangi katalog</p><h2 class="mcard__title">Katalog 2026</h2></div>
-            </a>
-          </li>
-          <li>
-            <a class="mcard" href="brands.html">
-              <img class="mcard__img" src="assets/img/cover-food.jpg" alt="" loading="lazy">
-              <div class="mcard__text"><p class="eyebrow">Margaritto va Smaylo</p><h2 class="mcard__title">Margarin va spred</h2></div>
-            </a>
-          </li>
-          <li>
-            <a class="mcard sky" href="products.html?cat=sochiq">
+            <a class="mcard sky" href="bulut.html">
               <img class="mcard__img mcard__img--top feather" src="assets/img/products/t05.jpg" alt="" loading="lazy" width="900" height="900">
-              <div class="mcard__text"><p class="eyebrow">Qogʻoz sochiqlar</p><h2 class="mcard__title">BIG — uch qatlam</h2></div>
+              <div class="mcard__text"><p class="eyebrow">Qogʻoz mahsulotlari</p><h2 class="mcard__title">Bulut</h2></div>
+            </a>
+          </li>
+          <li>
+            <a class="mcard" href="margaritto.html">
+              <img class="mcard__img" src="assets/img/cover-food.jpg" alt="" loading="lazy">
+              <div class="mcard__text"><p class="eyebrow">Margarin</p><h2 class="mcard__title">Margaritto</h2></div>
+            </a>
+          </li>
+          <li>
+            <a class="mcard" href="smaylo.html">
+              <img class="mcard__img mcard__img--pos" src="assets/img/card-smaylo.jpg" alt="" loading="lazy">
+              <div class="mcard__text"><p class="eyebrow">Spred</p><h2 class="mcard__title">Smaylo</h2></div>
             </a>
           </li>
           <li>
             <a class="mcard sky sky--leaf" href="pandoozy.html">
               <img class="mcard__img mcard__img--top feather" src="assets/img/products/p03.jpg" alt="" loading="lazy" width="900" height="900">
-              <div class="mcard__text"><p class="eyebrow">PanDoozy</p><h2 class="mcard__title">Olti qatlamgacha</h2></div>
+              <div class="mcard__text"><p class="eyebrow">Olti qatlamgacha</p><h2 class="mcard__title">PanDoozy</h2></div>
             </a>
           </li>
         </ul>

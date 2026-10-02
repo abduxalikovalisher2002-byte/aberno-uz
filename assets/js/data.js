@@ -248,7 +248,7 @@ window.ABERNO = (function () {
       text: [SPRED_TEXT], uses: SPRED_USES
     },
     {
-      id: "y04", cat: "spred", brand: "smaylo", name: "«Slivochniy zavtrak» spredi 72%", fat: "72%", type: "Oʻsimlik yogʻli spred",
+      id: "y04", cat: "spred", brand: "smaylo", label: "Aberno", name: "«Slivochniy zavtrak» spredi 72%", fat: "72%", type: "Oʻsimlik yogʻli spred",
       packs: "Briket: 2,5 kg", boxQty: ["2,5 kg × 2 dona = 5 kg"], boxSize: ["2,5 kg qadoqlar: 10×20×31 sm (0,0062 m³)"],
       text: [SPRED_TEXT], uses: ["Nonushta uchun", "Non mahsulotlari", "Qumoq xamir va pishiriqlar", "Qovurish va pishirish"]
     }
