@@ -1,7 +1,7 @@
 /* ==========================================================
    Aberno Group — mahsulotlar katalogi
-   Manba: «Katalog Bulut» (14.08.2026). Har bir yozuv katalogdagi
-   jadvaldan olingan; `n` — katalogdagi tartib raqami.
+   Manba: «Katalog Bulut» (14.08.2026) va «Aberno catalog» (Margaritto,
+   Smaylo). Har bir yozuv katalogdan olingan; `n` — tartib raqami.
    ========================================================== */
 window.ABERNO = (function () {
   "use strict";
@@ -12,7 +12,9 @@ window.ABERNO = (function () {
 
   var brands = {
     bulut: { name: "Bulut", page: "bulut.html", tone: "sky" },
-    pandoozy: { name: "PanDoozy", page: "pandoozy.html", tone: "leaf" }
+    pandoozy: { name: "PanDoozy", page: "pandoozy.html", tone: "leaf" },
+    margaritto: { name: "Margaritto", page: "margaritto.html" },
+    smaylo: { name: "Smaylo", page: "smaylo.html" }
   };
 
   var categories = [
@@ -63,6 +65,22 @@ window.ABERNO = (function () {
       lead: "Olti, sakkiz va oltmish donali qadoqlar, Aroma turlari va Mega Rolls.",
       use: "Uy va jamoat joylari uchun.",
       show: ["h04", "h03", "h05"]
+    },
+    {
+      id: "margarin",
+      name: "Margarin",
+      one: "Margarin",
+      lead: "Uy oshxonasi uchun briketlar, korxonalar uchun 10 va 20 kg qutilar.",
+      use: "Qandolat, non va qatlamli xamir mahsulotlari tayyorlash uchun.",
+      photo: "m01"
+    },
+    {
+      id: "spred",
+      name: "Spred",
+      one: "Spred",
+      lead: "Nonushta, pishiriq va issiq taomlar uchun oʻsimlik yogʻli spredlar.",
+      use: "Buterbrod, pishiriq, garnir va issiq taomlar uchun.",
+      photo: "y01"
     }
   ];
 
@@ -152,6 +170,103 @@ window.ABERNO = (function () {
     return p;
   });
 
+  /* Margaritto va Smaylo: «Aberno catalog» dagi tavsif, qadoq va quti oʻlchamlari */
+  var BOX_10_20 = ["10 kg quti: 14,5×22×36,5 sm (0,0116435 m³)", "20 kg quti: 22×25×39 sm (0,02145 m³)"];
+  var PLOMBIR = "Katta hajmdagi buyurtmalarda mijoz xohishiga koʻra qaymoqli taʼm va hid plombir taʼmi va hidiga almashtirilishi mumkin (eng kam buyurtma — 1 000 kg).";
+  var SPRED_TEXT = "Oʻsimlik yogʻli spred aʼlo taʼm sifatlariga ega. Buterbrod tayyorlash uchun juda mos, shuningdek sut mahsulotlari va garnirlarga qoʻshish, sabzavot va goʻsht qovurish, unli qandolat (shirin pechenye, pryanik, suli pechenyesi, keks) hamda non mahsulotlari (non, baton, bulochka) pishirishda ishlatiladi.";
+  var SPRED_USES = ["Nonushta uchun", "Desertlar", "Somsa va qatlamli pishiriqlar", "Issiq taomlar va garnirlar"];
+
+  var food = [
+    {
+      id: "m01", cat: "margarin", brand: "margaritto", name: "Margaritto Universal 80%", fat: "80%", type: "Margarin",
+      packs: "Briket: 200 g va 500 g",
+      boxQty: ["200 g × 30 dona = 6 kg", "500 g × 12 dona = 6 kg"],
+      boxSize: ["200 g qadoqlar: 8×20×35 sm (0,007 m³)", "500 g qadoqlar: 13×21×25 sm (0,006825 m³)"],
+      text: ["Turli qandolat mahsulotlari tayyorlash uchun moʻljallangan, qaymoqli taʼmga ega margarin.", "Unli mahsulotlar, qumoq xamir, non va xamirturushli xamir mahsulotlari uchun mos. Asosan uy bekalari turli pishiriqlar tayyorlashda ishlatadi."],
+      uses: ["Non va bulochkalar", "Qumoq xamir va tortlar", "Napoleon va medovik", "Pechenye va somsa"]
+    },
+    {
+      id: "m02", cat: "margarin", brand: "margaritto", name: "Margaritto qatlamli xamir uchun 80%", fat: "80%", type: "Margarin",
+      packs: "Briket: 200 g va 500 g",
+      boxQty: ["200 g × 30 dona = 6 kg", "500 g × 12 dona = 6 kg"],
+      boxSize: ["200 g qadoqlar: 8×20×35 sm (0,007 m³)", "500 g qadoqlar: 13×21×25 sm (0,006825 m³)"],
+      text: ["Qatlamli xamir mahsulotlari uchun maxsus ishlab chiqilgan. Asosan uy bekalari foydalanadi. Boshqa qandolat mahsulotlari uchun tavsiya etilmaydi.", "Bu margarin bilan tayyorlangan mahsulotlarda qatlamlar aniq va yaxshi ajraladi, hajm yaxshi chiqadi."],
+      uses: ["Somsa", "Qatlamli xamir", "Kruassan", "Kremli naychalar va Napoleon torti"]
+    },
+    {
+      id: "m03", cat: "margarin", brand: "margaritto", name: "Margaritto 82% qaymoqli taʼm", fat: "82%", type: "Margarin",
+      packs: "Quti: 10 kg va 20 kg", boxQty: ["10 kg quti", "20 kg quti"], boxSize: BOX_10_20,
+      text: ["Qandolat mahsulotlari va xamirturushli non mahsulotlari uchun maxsus ishlab chiqilgan universal margarin.", "Bu margarin bilan tayyorlangan mahsulotlar hajmdorroq boʻladi va pishirishda yaxshi koʻtariladi. Shuningdek, tayyor mahsulotning saqlash muddatini uzaytirishga yordam beradi: u uzoqroq yangi turadi va sifatini saqlaydi."],
+      uses: ["Non va bulochkalar", "Qumoq xamir va tortlar", "Napoleon torti", "Asalli tort"]
+    },
+    {
+      id: "m04", cat: "margarin", brand: "margaritto", name: "Margaritto 72% qaymoqli taʼm", fat: "72%", type: "Margarin",
+      packs: "Quti: 10 kg va 20 kg", boxQty: ["10 kg quti", "20 kg quti"], boxSize: BOX_10_20,
+      text: ["Turli qandolat mahsulotlari tayyorlash uchun moʻljallangan, toʻyingan qaymoqli taʼmga ega margarin.", "Unli mahsulotlar, non va xamirturushli xamir pishiriqlari uchun mos."],
+      uses: ["Non", "Bulochkalar", "Qumoq xamir", "Tortlar"]
+    },
+    {
+      id: "m05", cat: "margarin", brand: "margaritto", name: "Margaritto 72% kremlar uchun", fat: "72%", type: "Margarin",
+      packs: "Quti: 10 kg va 20 kg", boxQty: ["10 kg quti", "20 kg quti"], boxSize: BOX_10_20,
+      text: ["Krem tayyorlash uchun maxsus ishlab chiqilgan. Boshqa margarinlarga nisbatan rangi oqroq, taʼmi va hidi nozik qaymoqli. Bu margarin bilan tayyorlangan kremlar shaklini uzoqroq saqlaydi.", PLOMBIR],
+      uses: ["Kremlar", "Sufle", "Qaynatma kremlar", "Profitrol uchun krem"]
+    },
+    {
+      id: "m06", cat: "margarin", brand: "margaritto", name: "Margaritto 80% kremlar uchun", fat: "80%", type: "Margarin",
+      packs: "Quti: 10 kg va 20 kg", boxQty: ["10 kg quti", "20 kg quti"], boxSize: BOX_10_20,
+      text: ["Premium qandolat kremlari uchun maxsus ishlab chiqilgan. Boshqa margarinlarga nisbatan rangi oqroq, taʼmi nozik qaymoqli, hidi yoqimli. Kremlar shaklini uzoqroq saqlaydi; krem uchun moʻljallangan 72% margaringa nisbatan koʻproq hajm va uzoqroq barqarorlik beradi.", PLOMBIR],
+      uses: ["Kremlar", "Sufle", "Qaynatma kremlar", "Profitrol uchun krem"]
+    },
+    {
+      id: "m07", cat: "margarin", brand: "margaritto", name: "Margaritto qatlamli xamir uchun 80%, 10 kg", fat: "80%", type: "Margarin",
+      packs: "Quti: 10 kg", boxQty: ["2 kg × 5 dona = 10 kg"], boxSize: ["2 kg qadoqlar: 12,5×31×38 sm (0,006 m³)"],
+      text: ["Qatlamli xamir mahsulotlari uchun maxsus ishlab chiqilgan. Asosan somsa ishlab chiqaruvchilar eritib yoki eritmasdan ishlatadi.", "Boshqa qandolat mahsulotlari uchun tavsiya etilmaydi."],
+      uses: ["Somsa", "Qatlamli pishiriqlar", "Kruassanlar", "Kremli naychalar va Napoleon torti"]
+    },
+    {
+      id: "m08", cat: "margarin", brand: "margaritto", name: "Margaritto eritilgan oʻsimlik yogʻi 99%", fat: "99%", type: "Eritilgan oʻsimlik yogʻi",
+      packs: "10 kg quti va 10 kg chelak", boxQty: ["10 kg quti"], boxSize: ["10 kg quti: 14,5×22×36,5 sm (0,0116435 m³)"],
+      text: ["Xamirturushli xamir, qumoq xamir va turli qandolat mahsulotlari uchun ishlatiladi.", "Margaringa nisbatan bu yogʻ bilan tayyorlangan mahsulotlar sifatliroq va hajmdorroq chiqadi. Shuningdek, fritürda qovurish, taom pishirish va tovuq taomlari tayyorlash uchun mos."],
+      uses: ["Non va patir", "Xamirturushli xamir mahsulotlari va tortlar", "Pechenye, qumoq xamir va pishiriqlar", "Issiq taomlar va tabaka tovuq"]
+    },
+    {
+      id: "y01", cat: "spred", brand: "smaylo", name: "Smaylo spredi 82,5%", fat: "82,5%", type: "Oʻsimlik-sariyogʻli spred",
+      packs: "Briket: 200 g va 500 g",
+      boxQty: ["200 g × 30 dona = 6 kg", "500 g × 10 dona = 5 kg"],
+      boxSize: ["200 g qadoqlar: 13×21×25 sm (0,006825 m³)", "500 g qadoqlar: 9,5×19×32 sm (0,005776 m³)"],
+      text: ["Oʻsimlik-sariyogʻli spred aʼlo taʼm sifatlariga ega va sariyogʻga yaxshi muqobil.", "Buterbrod tayyorlash, sut mahsulotlari va garnirlarga qoʻshish, unli qandolat (shirin pechenye, pryanik, suli pechenyesi, keks) hamda non mahsulotlari (bulochka, non, baton, yopgan non) pishirish uchun juda mos."],
+      uses: ["Nonushta uchun", "Keks va maffinlar", "Krem va glazurlar", "Makaron, boʻtqa va garnirlarga qoʻshiladi"]
+    },
+    {
+      id: "y02", cat: "spred", brand: "smaylo", name: "Smaylo «For your table» 72%", fat: "72%", type: "Oʻsimlik yogʻli spred",
+      packs: "Pergament briket: 500 g", boxQty: ["500 g × 20 dona = 10 kg"], boxSize: ["500 g qadoqlar: 13,5×25,5×35,5 sm (0,01222088 m³)"],
+      text: [SPRED_TEXT], uses: SPRED_USES
+    },
+    {
+      id: "y03", cat: "spred", brand: "smaylo", name: "Smaylo spredi 72%, 2,5 kg", fat: "72%", type: "Oʻsimlik yogʻli spred",
+      packs: "Pergament briket: 2,5 kg", boxQty: ["2,5 kg × 2 dona = 5 kg"], boxSize: ["2,5 kg qadoqlar: 10×20×31 sm (0,0062 m³)"],
+      text: [SPRED_TEXT], uses: SPRED_USES
+    },
+    {
+      id: "y04", cat: "spred", brand: "smaylo", name: "«Slivochniy zavtrak» spredi 72%", fat: "72%", type: "Oʻsimlik yogʻli spred",
+      packs: "Briket: 2,5 kg", boxQty: ["2,5 kg × 2 dona = 5 kg"], boxSize: ["2,5 kg qadoqlar: 10×20×31 sm (0,0062 m³)"],
+      text: [SPRED_TEXT], uses: ["Nonushta uchun", "Non mahsulotlari", "Qumoq xamir va pishiriqlar", "Qovurish va pishirish"]
+    }
+  ];
+
+  food.forEach(function (p, i) {
+    p.n = rows.length + i + 1;
+    p.photo = true;
+    p.variant = ""; p.qty = 0; p.size = ""; p.comp = ""; p.ply = 0; p.rolls = 0;
+    p.img = "assets/img/products/" + p.id + ".jpg";
+    p.thumb = "assets/img/products/thumb/" + p.id + ".jpg";
+    p.url = "product.html?id=" + p.id;
+    p.title = p.name;
+    p.desc = p.type + ", " + p.packs.charAt(0).toLowerCase() + p.packs.slice(1);
+    p.useImgs = [1, 2, 3, 4].map(function (k) { return "assets/img/uses/" + p.id + "-" + k + ".jpg"; });
+    products.push(p);
+  });
+
   var byId = {};
   products.forEach(function (p) { byId[p.id] = p; });
   var catById = {};
@@ -165,6 +280,7 @@ window.ABERNO = (function () {
     catById: catById,
     contacts: {
       phones: ["+998 95 342-70-70", "+998 71 230-09-00", "+998 95 324-70-70"],
+      address: "Toshkent sh., Yashnobod tumani, Uysozlash koʻchasi, 72",
       email: "info@aberno.uz",
       social: [
         { brand: "Aberno", tg: "aberno_uz", ig: "aberno.uz" },

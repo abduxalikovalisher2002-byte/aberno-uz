@@ -209,6 +209,14 @@
   }
 
   function card(p) {
+    if (p.photo) {
+      return '<li class="pcard pcard--photo">' +
+        '<a class="pcard__link" href="' + p.url + '" aria-label="' + esc(p.title + " — " + p.desc) + '"></a>' +
+        '<button class="fav" type="button" data-fav="' + p.id + '" aria-pressed="false" aria-label="Tanlanganlarga qoʻshish">' + ICON.heart + "</button>" +
+        '<figure class="pcard__fig"><img src="' + p.thumb + '" alt="" loading="lazy" width="840" height="350"></figure>' +
+        '<div class="pcard__text"><h3 class="pcard__name">' + esc(p.name) + '</h3><p class="pcard__desc">' + esc(p.desc) + "</p></div>" +
+        "</li>";
+    }
     var leaf = p.brand === "pandoozy";
     return '<li class="pcard">' +
       '<a class="pcard__link" href="' + p.url + '" aria-label="' + esc(p.title + (p.desc ? " — " + p.desc : "")) + '"></a>' +
@@ -439,7 +447,7 @@
     var host = $("[data-banners]");
     if (!host) return;
     var items = cats.map(function (c) {
-      return { cls: "", href: "products.html?cat=" + c.id, title: c.name, lead: c.lead, count: catCount(c.id), show: c.show };
+      return { cls: "", href: "products.html?cat=" + c.id, title: c.name, lead: c.lead, count: catCount(c.id), show: c.show, photo: c.photo };
     });
     items.push({
       cls: " sky--leaf", href: "products.html?brand=pandoozy", title: "PanDoozy",
@@ -448,10 +456,12 @@
       show: ["p04", "p03", "p02"]
     });
     host.innerHTML = items.map(function (it) {
-      return '<li class="banner sky' + it.cls + ' reveal">' +
-        '<div class="banner__row" aria-hidden="true">' +
-          it.show.map(function (id) { return '<img class="feather" src="' + DATA.byId[id].img + '" alt="" loading="lazy" width="900" height="900">'; }).join("") +
-        "</div>" +
+      return '<li class="banner ' + (it.photo ? "banner--photo" : "sky" + it.cls) + ' reveal">' +
+        (it.photo
+          ? '<img class="banner__bg" src="' + DATA.byId[it.photo].img + '" alt="" loading="lazy">'
+          : '<div class="banner__row" aria-hidden="true">' +
+              it.show.map(function (id) { return '<img class="feather" src="' + DATA.byId[id].img + '" alt="" loading="lazy" width="900" height="900">'; }).join("") +
+            "</div>") +
         '<div class="banner__text"><p class="eyebrow">' + it.count + " ta mahsulot</p>" +
           '<h2 class="h50">' + it.title + "</h2><p>" + it.lead + "</p>" +
           '<span class="link">Batafsil</span></div>' +
@@ -661,7 +671,11 @@
 
     document.title = p.title + (p.desc ? ", " + p.desc : "") + " — Aberno Group";
     var meta = $('meta[name="description"]');
-    if (meta) meta.setAttribute("content", p.title + ". " + [p.desc, p.comp].filter(Boolean).join(". ") + ". Aberno Group katalogi, № " + p.n + ".");
+    if (meta) {
+      meta.setAttribute("content", p.photo
+        ? p.title + ". " + p.desc + ". " + p.text[0]
+        : p.title + ". " + [p.desc, p.comp].filter(Boolean).join(". ") + ". Aberno Group katalogi, № " + p.n + ".");
+    }
 
     var same = DATA.products.filter(function (o) { return o.id !== p.id && o.name === p.name && o.brand === p.brand; });
     var others = DATA.products.filter(function (o) { return o.id !== p.id && o.cat === p.cat && same.indexOf(o) === -1; });
@@ -688,11 +702,15 @@
         text: (pack.length ? pack.join(", ") + ". " : "") + cat.use
       });
     }
+    if (p.photo) {
+      features.push({ eyebrow: "Tavsif", title: "Yogʻliligi " + p.fat, text: p.text.join("</p><p>") });
+    }
     if (!features.length) {
       features.push({ eyebrow: "Qoʻllanilishi", title: p.variant, text: cat.use + " Qadoq va yetkazib berish shartlari boʻyicha savdo boʻlimiga murojaat qiling." });
     }
 
     var facts = [];
+    if (p.photo) facts.push(["Turi", p.type], ["Yogʻliligi", p.fat], ["Qadoq", p.packs]);
     if (p.qty) facts.push(["Miqdori", p.qty + " dona"]);
     if (p.rolls) facts.push(["Rulon", String(p.rolls)]);
     if (p.size) facts.push(["Oʻlchami", p.size + " sm"]);
@@ -702,7 +720,17 @@
     var dl = function (rows) {
       return "<dl>" + rows.map(function (r) { return "<div><dt>" + r[0] + "</dt><dd>" + esc(r[1]) + "</dd></div>"; }).join("") + "</dl>";
     };
-    var acc = [
+    var list = function (items) {
+      return items.map(function (t) { return "<p>" + esc(t) + "</p>"; }).join("");
+    };
+    var acc = p.photo ? [
+      ["Asosiy xususiyatlar", dl(facts)],
+      ["Qutidagi miqdor", list(p.boxQty)],
+      ["Quti oʻlchami", list(p.boxSize)],
+      ["Qoʻllanilishi", "<p>" + cat.use + "</p>"],
+      ["Katalog", dl([["Brend", brand.name], ["Kategoriya", cat.name]]) +
+        '<a class="link" href="' + ask + '">Toʻliq katalogni soʻrash</a>']
+    ] : [
       ["Asosiy xususiyatlar", facts.length ? dl(facts) : "<p>Oʻlcham va toʻplam tarkibi boʻyicha savdo boʻlimidan maʼlumot oling.</p>"],
       ["Tarkibi", p.comp ? dl([["Tarkibi", p.comp]]) : "<p>Katalogda koʻrsatilmagan. Savdo boʻlimidan aniqlashtiring.</p>"],
       ["Qoʻllanilishi", "<p>" + cat.use + "</p>"],
@@ -710,7 +738,24 @@
         '<a class="link" href="' + ask + '">Toʻliq katalogni soʻrash</a>']
     ];
 
-    host.innerHTML =
+    var hero = p.photo
+      ? '<section class="phero phero--photo">' +
+          '<img class="phero__bg" src="' + p.img + '" alt="' + esc(p.title) + '" fetchpriority="high">' +
+          '<div class="phero__info">' +
+            '<button class="phero__fav" type="button" data-fav="' + p.id + '" aria-pressed="false">' + ICON.heart + '<span data-fav-label>Tanlanganlarga qoʻshish</span></button>' +
+            '<h1 class="phero__name">' + esc(p.title) + "</h1>" +
+            '<p class="phero__desc">' + esc(p.desc) + "</p>" +
+          "</div>" +
+        "</section>"
+      : "";
+    var uses = p.photo
+      ? '<section class="block block--soft"><div class="block__head reveal"><p class="eyebrow">Qoʻllanilishi</p><h2 class="h50">Nimalar tayyorlash mumkin</h2></div>' +
+          '<ul class="uses">' + p.uses.map(function (u, i) {
+            return '<li class="reveal"><img src="' + p.useImgs[i] + '" alt="" loading="lazy" width="760" height="400"><p>' + esc(u) + "</p></li>";
+          }).join("") + "</ul></section>"
+      : "";
+
+    host.innerHTML = hero + (p.photo ? "" :
       '<section class="phero sky' + tone + '">' +
         '<div class="phero__info">' +
           '<button class="phero__fav" type="button" data-fav="' + p.id + '" aria-pressed="false">' + ICON.heart + '<span data-fav-label>Tanlanganlarga qoʻshish</span></button>' +
@@ -725,21 +770,31 @@
             "</span>Variantlarni koʻrish</a>"
           : "") +
         '<button class="phero__night" type="button" data-night>' + ICON.moon + "<span>Tungi rejimda koʻrish</span></button>" +
-      "</section>" +
+      "</section>") +
 
       '<section class="statement"><p class="eyebrow">' + brand.name + " · " + cat.name + "</p>" +
-        '<h2 class="h70 reveal">' + esc(p.name) + (p.qty ? " — " + p.qty + " dona" : "") + (p.ply ? ", " + p.ply + " qatlam" : "") + ".</h2></section>" +
+        '<h2 class="h70 reveal">' + esc(p.name) +
+          (p.photo ? " — " + p.packs.charAt(0).toLowerCase() + p.packs.slice(1) : (p.qty ? " — " + p.qty + " dona" : "") + (p.ply ? ", " + p.ply + " qatlam" : "")) +
+        ".</h2></section>" +
 
       features.map(function (f, i) {
+        if (p.photo) {
+          return '<section class="split"><div class="reveal"><p class="eyebrow">' + f.eyebrow + '</p><h2 class="h50 accent">' + esc(f.title) + "</h2></div>" +
+            '<div class="reveal"><p class="lead">' + p.text.join('</p><p class="lead">') + "</p></div></section>";
+        }
         return '<section class="feature' + (i % 2 ? " feature--flip" : "") + '">' +
           '<div class="feature__media sky' + tone + '"><img class="feather" src="' + (i && same[0] ? same[0].img : p.img) + '" alt="" loading="lazy" width="900" height="900"></div>' +
           '<div class="feature__text reveal"><p class="eyebrow">' + f.eyebrow + '</p><h2 class="h70">' + esc(f.title) + "</h2><p>" + f.text + "</p></div>" +
         "</section>";
       }).join("") +
 
+      uses +
+
       '<section class="specs">' +
-        '<div class="specs__head"><div><h2 class="h50">Batafsil<br><span class="accent">xususiyatlar</span></h2><p>Katalog № ' + p.n + '</p></div>' +
-          '<div class="sky' + tone + '"><img class="feather" src="' + p.img + '" alt="" loading="lazy" width="900" height="900"></div></div>' +
+        '<div class="specs__head"><div><h2 class="h50">Batafsil<br><span class="accent">xususiyatlar</span></h2><p>' + (p.photo ? brand.name + " · " + cat.name : "Katalog № " + p.n) + "</p></div>" +
+          (p.photo
+            ? '<div><img src="' + p.thumb + '" alt="" loading="lazy" width="840" height="350"></div></div>'
+            : '<div class="sky' + tone + '"><img class="feather" src="' + p.img + '" alt="" loading="lazy" width="900" height="900"></div></div>') +
         '<div class="acc">' +
           acc.map(function (a, i) {
             return '<div class="acc__item"><h3><button class="acc__btn" type="button" aria-expanded="' + (i === 0) + '" aria-controls="acc-' + i + '">' + a[0] + "</button></h3>" +
@@ -749,7 +804,9 @@
       "</section>" +
 
       '<section class="dealer">' +
-        '<img class="dealer__img" src="assets/img/cover.jpg" alt="Bulut mahsulotlari yogʻoch stol ustida" loading="lazy">' +
+        (p.photo
+          ? '<img class="dealer__img" src="assets/img/cover-food.jpg" alt="Margaritto va Smaylo mahsulotlari somsa bilan" loading="lazy">'
+          : '<img class="dealer__img" src="assets/img/cover.jpg" alt="Bulut mahsulotlari yogʻoch stol ustida" loading="lazy">') +
         '<div class="dealer__text"><h2 class="h50">Savdo boʻlimi bilan bogʻlaning</h2>' +
           "<p>Narx, qadoq hajmi va yetkazib berish shartlari boʻyicha savdo boʻlimimiz maslahat beradi. Ulgurji xaridorlar, savdo tarmoqlari va HoReCa uchun alohida shartlar mavjud.</p>" +
           '<a class="link" href="' + ask + '">Soʻrov yuborish</a>' +
