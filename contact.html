@@ -1,188 +1,111 @@
 <!DOCTYPE html>
-<html lang="uz" class="no-js">
+<html lang="uz">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aloqa — Aberno Group</title>
-  <meta name="description" content="Aberno Group bilan bogʻlaning: hamkorlik, ulgurji buyurtmalar va boshqa savollar boʻyicha.">
+  <meta name="description" content="Aberno Group bilan bogʻlanish: +998 95 342-70-70, +998 71 230-09-00, +998 95 324-70-70. Hamkorlik va ulgurji buyurtmalar.">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.setAttribute("data-theme",t)})();</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;700;800&display=swap" rel="stylesheet">
+  <script>(function(){var d=document.documentElement,t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}d.setAttribute("data-theme",t);d.classList.add("js")})();</script>
   <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/data.js" defer></script>
   <script src="assets/js/main.js" defer></script>
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="container">
-      <a href="index.html" class="logo" aria-label="Aberno Group — bosh sahifa">
-        <svg class="logo__mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#13233f"/><path d="M11 30 20 10l9 20" fill="none" stroke="#e0a526" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.5 23.5h11" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>
-        <span class="logo__text"><span class="logo__name">ABERNO</span><span class="logo__sub">GROUP</span></span>
-      </a>
-      <nav class="nav" id="nav" aria-label="Asosiy menyu">
-        <ul class="nav__list">
-          <li class="nav__item"><a class="nav__link" href="index.html">Bosh sahifa</a></li>
-          <li class="nav__item"><a class="nav__link" href="about.html">Kompaniya</a></li>
-          <li class="nav__item">
-            <a class="nav__link" href="brands.html">Brendlar</a>
-            <ul class="nav__dropdown">
-              <li><a href="margaritto.html"><span class="dot dot--margaritto"></span>Margaritto — margarin</a></li>
-              <li><a href="smaylo.html"><span class="dot dot--smaylo"></span>Smaylo — spred</a></li>
-              <li><a href="bulut.html"><span class="dot dot--bulut"></span>Bulut — qogʻoz mahsulotlari</a></li>
-            </ul>
-          </li>
-          <li class="nav__item"><a class="nav__link" href="production.html">Ishlab chiqarish</a></li>
-          <li class="nav__item"><a class="nav__link" href="partners.html">Hamkorlik</a></li>
-          <li class="nav__item"><a class="nav__link" href="contact.html">Aloqa</a></li>
-        </ul>
-        <a class="btn btn--primary nav__cta" href="contact.html">Bogʻlanish</a>
-      </nav>
-      <div class="header-actions">
-        <button class="theme-toggle" type="button" aria-label="Qorongʻu rejimga oʻtish" title="Mavzuni almashtirish">
-          <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
-          <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-        </button>
-        <button class="burger" type="button" aria-label="Menyu" aria-expanded="false" aria-controls="nav"><span></span></button>
-      </div>
-    </div>
-  </header>
+  <header class="site-header" data-header></header>
 
   <main>
-    <section class="page-hero">
-      <div class="container">
-        <nav class="breadcrumbs" aria-label="Yoʻl"><a href="index.html">Bosh sahifa</a>/<span aria-current="page">Aloqa</span></nav>
-        <span class="eyebrow">Aloqa</span>
-        <h1>Biz bilan bogʻlaning</h1>
-        <p class="lead">Hamkorlik, ulgurji buyurtma yoki mahsulotlarimiz haqida savolingiz boʻlsa, yozing yoki qoʻngʻiroq qiling.</p>
-      </div>
+    <section class="cover sky sky--navy">
+      <p class="eyebrow eyebrow--lg">Aloqa</p>
+      <h1 class="h100">Biz bilan bogʻlaning</h1>
+      <p class="cover__lead">Hamkorlik, ulgurji buyurtma yoki mahsulotlarimiz haqida savolingiz boʻlsa, yozing yoki qoʻngʻiroq qiling.</p>
     </section>
 
-    <section class="section">
-      <div class="container contact-grid">
-        <!-- TODO: haqiqiy aloqa maʼlumotlarini kiriting -->
-        <div class="contact-cards reveal">
-          <div class="contact-card">
-            <div class="contact-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg></div>
-            <div><h3>Telefon</h3><a href="tel:+998000000000">+998 (00) 000-00-00</a></div>
-          </div>
-          <div class="contact-card">
-            <div class="contact-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></div>
-            <div><h3>Email</h3><a href="mailto:info@aberno.uz">info@aberno.uz</a></div>
-          </div>
-          <div class="contact-card">
-            <div class="contact-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.1 7-12a7 7 0 0 0-14 0c0 5.9 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
-            <div><h3>Manzil</h3><p>Oʻzbekiston</p></div>
-          </div>
-          <div class="contact-card">
-            <div class="contact-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-            <div><h3>Ish vaqti</h3><p>Dushanba – Shanba, 9:00 – 18:00</p></div>
-          </div>
+    <section class="contact">
+      <dl class="contact__info">
+        <div class="contact__row">
+          <dt>Telefon</dt>
+          <dd><a href="tel:+998953427070">+998 95 342-70-70</a></dd>
+          <dd><a href="tel:+998712300900">+998 71 230-09-00</a></dd>
+          <dd><a href="tel:+998953247070">+998 95 324-70-70</a></dd>
         </div>
+        <div class="contact__row"><dt>Email</dt><dd><a href="mailto:info@aberno.uz">info@aberno.uz</a></dd></div>
+        <div class="contact__row"><dt>Manzil</dt><dd class="is-light">Oʻzbekiston</dd></div>
+        <div class="contact__row"><dt>Ish vaqti</dt><dd class="is-light">Dushanba – Shanba, 9:00 – 18:00</dd></div>
+      </dl>
 
-        <form class="form reveal" id="contact-form" novalidate>
-          <h2 style="font-size:1.8rem">Xabar yuborish</h2>
-          <div class="form__success" role="status" tabindex="-1">Rahmat! Xabaringiz qabul qilindi. Tez orada siz bilan bogʻlanamiz.</div>
-          <div class="form__row">
-            <div class="field">
-              <label for="name">Ismingiz *</label>
-              <input id="name" name="name" type="text" autocomplete="name" required>
-              <span class="field__error" aria-live="polite"></span>
-            </div>
-            <div class="field">
-              <label for="phone">Telefon *</label>
-              <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+998" required>
-              <span class="field__error" aria-live="polite"></span>
-            </div>
-          </div>
-          <div class="form__row">
-            <div class="field">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" autocomplete="email">
-              <span class="field__error" aria-live="polite"></span>
-            </div>
-            <div class="field">
-              <label for="company">Kompaniya</label>
-              <input id="company" name="company" type="text" autocomplete="organization">
-              <span class="field__error"></span>
-            </div>
-          </div>
-          <div class="field">
-            <label for="subject">Mavzu *</label>
-            <select id="subject" name="subject" required>
-              <option value="">Tanlang</option>
-              <option value="hamkorlik">Hamkorlik</option>
-              <option value="ulgurji">Ulgurji buyurtma</option>
-              <option value="mahsulot">Mahsulot haqida savol</option>
-              <option value="boshqa">Boshqa</option>
-            </select>
-            <span class="field__error" aria-live="polite"></span>
-          </div>
-          <div class="field">
-            <label for="message">Xabar *</label>
-            <textarea id="message" name="message" required></textarea>
-            <span class="field__error" aria-live="polite"></span>
-          </div>
-          <button class="btn btn--dark" type="submit">Yuborish</button>
-          <p class="form__note">* bilan belgilangan maydonlar majburiy.</p>
-        </form>
-      </div>
+      <form class="form contact__form" id="contact-form" novalidate>
+        <h2 class="h30">Xabar yuborish</h2>
+        <p class="form__success" tabindex="-1" role="status">Rahmat! Xabaringiz qabul qilindi. Tez orada siz bilan bogʻlanamiz.</p>
+        <div class="field">
+          <label for="name">Ismingiz *</label>
+          <input type="text" id="name" name="name" autocomplete="name" required>
+          <span class="field__error" aria-live="polite"></span>
+        </div>
+        <div class="field">
+          <label for="phone">Telefon *</label>
+          <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+998" required>
+          <span class="field__error" aria-live="polite"></span>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" autocomplete="email">
+          <span class="field__error" aria-live="polite"></span>
+        </div>
+        <div class="field">
+          <label for="company">Kompaniya</label>
+          <input type="text" id="company" name="company" autocomplete="organization">
+          <span class="field__error"></span>
+        </div>
+        <div class="field field--full">
+          <label for="subject">Mavzu *</label>
+          <select id="subject" name="subject" required>
+            <option value="">Tanlang</option>
+            <option value="hamkorlik">Hamkorlik</option>
+            <option value="ulgurji">Ulgurji buyurtma</option>
+            <option value="mahsulot">Mahsulot haqida savol</option>
+            <option value="boshqa">Boshqa</option>
+          </select>
+          <span class="field__error" aria-live="polite"></span>
+        </div>
+        <div class="field field--full">
+          <label for="message">Xabar *</label>
+          <textarea id="message" name="message" required></textarea>
+          <span class="field__error" aria-live="polite"></span>
+        </div>
+        <div class="form__actions">
+          <button class="btn" type="submit">Yuborish</button>
+          <span class="form__note">* bilan belgilangan maydonlar majburiy.</span>
+        </div>
+      </form>
     </section>
 
-    <section class="section" style="padding-top:0">
-      <div class="container">
-        <!-- TODO: Yandex yoki Google xarita iframe'ini shu yerga joylang -->
-        <div class="map-placeholder reveal">Xarita shu yerda joylashadi</div>
+    <section class="block block--soft">
+      <div class="block__head reveal">
+        <p class="eyebrow">Rasmiy kanallar</p>
+        <h2 class="h50">Ijtimoiy tarmoqlarda</h2>
+      </div>
+      <div class="channels">
+        <div class="channel reveal"><h3>Aberno</h3>
+          <a href="https://t.me/aberno_uz" target="_blank" rel="noopener">Telegram: @aberno_uz</a>
+          <a href="https://instagram.com/aberno.uz" target="_blank" rel="noopener">Instagram: @aberno.uz</a></div>
+        <div class="channel reveal"><h3>Bulut</h3>
+          <a href="https://t.me/bulut_napkin" target="_blank" rel="noopener">Telegram: @bulut_napkin</a>
+          <a href="https://instagram.com/bulut.napkins" target="_blank" rel="noopener">Instagram: @bulut.napkins</a></div>
+        <div class="channel reveal"><h3>Margaritto</h3>
+          <a href="https://t.me/margaritto_uzb" target="_blank" rel="noopener">Telegram: @margaritto_uzb</a>
+          <a href="https://instagram.com/margaritto.uz" target="_blank" rel="noopener">Instagram: @margaritto.uz</a></div>
+        <div class="channel reveal"><h3>Smaylo</h3>
+          <a href="https://t.me/smaylo_uzb" target="_blank" rel="noopener">Telegram: @smaylo_uzb</a>
+          <a href="https://instagram.com/smaylo.uz" target="_blank" rel="noopener">Instagram: @smaylo.uz</a></div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <a href="index.html" class="logo">
-            <svg class="logo__mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#fff"/><path d="M11 30 20 10l9 20" fill="none" stroke="#e0a526" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.5 23.5h11" stroke="#13233f" stroke-width="3" stroke-linecap="round"/></svg>
-            <span class="logo__text"><span class="logo__name">ABERNO</span><span class="logo__sub">GROUP</span></span>
-          </a>
-          <p class="footer-about">Oziq-ovqat hamda sellyuloza-qogʻoz sanoatida faoliyat yurituvchi zamonaviy oʻzbek ishlab chiqarish kompaniyasi.</p>
-        </div>
-        <div>
-          <h4>Kompaniya</h4>
-          <ul class="footer-links">
-            <li><a href="about.html">Biz haqimizda</a></li>
-            <li><a href="production.html">Ishlab chiqarish</a></li>
-            <li><a href="partners.html">Hamkorlik</a></li>
-            <li><a href="contact.html">Aloqa</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Brendlar</h4>
-          <ul class="footer-links">
-            <li><a href="margaritto.html">Margaritto</a></li>
-            <li><a href="smaylo.html">Smaylo</a></li>
-            <li><a href="bulut.html">Bulut</a></li>
-            <li><a href="brands.html">Barcha mahsulotlar</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Aloqa</h4>
-          <ul class="footer-links">
-            <!-- TODO: haqiqiy aloqa maʼlumotlarini kiriting -->
-            <li><a href="tel:+998000000000">+998 (00) 000-00-00</a></li>
-            <li><a href="mailto:info@aberno.uz">info@aberno.uz</a></li>
-            <li>Oʻzbekiston</li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© <span data-year>2026</span> Aberno Group. Barcha huquqlar himoyalangan.</span>
-        <span>Oʻzbekistonda ishlab chiqarilgan</span>
-      </div>
-    </div>
-  </footer>
-
-  <button class="to-top" type="button" aria-label="Yuqoriga"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+  <footer class="site-footer" data-footer></footer>
 </body>
 </html>

@@ -1,206 +1,82 @@
 <!DOCTYPE html>
-<html lang="uz" class="no-js">
+<html lang="uz">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kompaniya haqida — Aberno Group</title>
-  <meta name="description" content="Aberno Group tarixi, tamoyillari va qadriyatlari. 2021-yilda tashkil etilgan zamonaviy oʻzbek ishlab chiqarish kompaniyasi.">
+  <title>Biz haqimizda — Aberno Group</title>
+  <meta name="description" content="Aberno Group — 2021-yilda tashkil etilgan zamonaviy oʻzbek ishlab chiqarish kompaniyasi: oziq-ovqat va sellyuloza-qogʻoz sanoati.">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script>(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.setAttribute("data-theme",t)})();</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;700;800&display=swap" rel="stylesheet">
+  <script>(function(){var d=document.documentElement,t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}d.setAttribute("data-theme",t);d.classList.add("js")})();</script>
   <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/data.js" defer></script>
   <script src="assets/js/main.js" defer></script>
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="container">
-      <a href="index.html" class="logo" aria-label="Aberno Group — bosh sahifa">
-        <svg class="logo__mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#13233f"/><path d="M11 30 20 10l9 20" fill="none" stroke="#e0a526" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.5 23.5h11" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>
-        <span class="logo__text"><span class="logo__name">ABERNO</span><span class="logo__sub">GROUP</span></span>
-      </a>
-      <nav class="nav" id="nav" aria-label="Asosiy menyu">
-        <ul class="nav__list">
-          <li class="nav__item"><a class="nav__link" href="index.html">Bosh sahifa</a></li>
-          <li class="nav__item"><a class="nav__link" href="about.html">Kompaniya</a></li>
-          <li class="nav__item">
-            <a class="nav__link" href="brands.html">Brendlar</a>
-            <ul class="nav__dropdown">
-              <li><a href="margaritto.html"><span class="dot dot--margaritto"></span>Margaritto — margarin</a></li>
-              <li><a href="smaylo.html"><span class="dot dot--smaylo"></span>Smaylo — spred</a></li>
-              <li><a href="bulut.html"><span class="dot dot--bulut"></span>Bulut — qogʻoz mahsulotlari</a></li>
-            </ul>
-          </li>
-          <li class="nav__item"><a class="nav__link" href="production.html">Ishlab chiqarish</a></li>
-          <li class="nav__item"><a class="nav__link" href="partners.html">Hamkorlik</a></li>
-          <li class="nav__item"><a class="nav__link" href="contact.html">Aloqa</a></li>
-        </ul>
-        <a class="btn btn--primary nav__cta" href="contact.html">Bogʻlanish</a>
-      </nav>
-      <div class="header-actions">
-        <button class="theme-toggle" type="button" aria-label="Qorongʻu rejimga oʻtish" title="Mavzuni almashtirish">
-          <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
-          <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-        </button>
-        <button class="burger" type="button" aria-label="Menyu" aria-expanded="false" aria-controls="nav"><span></span></button>
-      </div>
-    </div>
-  </header>
+  <header class="site-header" data-header></header>
 
   <main>
-    <section class="page-hero">
-      <div class="container">
-        <nav class="breadcrumbs" aria-label="Yoʻl"><a href="index.html">Bosh sahifa</a>/<span aria-current="page">Kompaniya</span></nav>
-        <span class="eyebrow">Biz haqimizda</span>
-        <h1>Oila uchun tanlaydigan mahsulotni ishlab chiqaramiz</h1>
-        <p class="lead">Aberno Group — 2021-yilda tashkil etilgan zamonaviy oʻzbek ishlab chiqarish kompaniyasi.</p>
+    <section class="cover sky sky--navy">
+      <p class="eyebrow eyebrow--lg">Biz haqimizda</p>
+      <h1 class="h100">Aberno Group</h1>
+      <p class="cover__lead">Oila uchun tanlaydigan mahsulotni ishlab chiqaramiz.</p>
+    </section>
+
+    <section class="split">
+      <h2 class="h50 accent reveal">Ikki sanoat — bitta sifat mezoni</h2>
+      <div class="reveal">
+        <p class="lead">Aberno Group — 2021-yilda tashkil etilgan zamonaviy oʻzbek ishlab chiqarish kompaniyasi. Oziq-ovqat sanoatida «Margaritto» va «Smaylo», sellyuloza hamda qogʻoz ishlab chiqarish sohasida esa «Bulut» brendlari bilan bozor yetakchilaridan biri.</p>
+        <p class="lead">Zavodimizda xalqaro standartlarga mos ishlab chiqarish liniyalari oʻrnatilgan. Xomashyodan tortib qadoqlashgacha boʻlgan har bir bosqich qatʼiy nazoratdan oʻtadi.</p>
+        <p class="lead">Bugun mahsulotlarimiz savdo tarmoqlari orqali minglab oilalar dasturxoniga, shuningdek, respublikamizdagi yetakchi non va qandolat korxonalari ishlab chiqarishiga yetib bormoqda.</p>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container split split--top">
-        <div class="reveal">
-          <span class="eyebrow">Bizning yoʻlimiz</span>
-          <h2>Ikki sanoat, uch brend</h2>
-          <p class="lead">Aberno Group — Oʻzbekiston oziq-ovqat sanoatida «Margaritto» va «Smaylo», sellyuloza hamda qogʻoz ishlab chiqarish sohasida esa «Bulut» brendlari bilan bozor yetakchilaridan biri.</p>
-          <p>Zavodimizda xalqaro standartlarga mos ishlab chiqarish liniyalari oʻrnatilgan. Xomashyodan tortib qadoqlashgacha boʻlgan har bir bosqich qatʼiy nazoratdan oʻtadi.</p>
-          <p>Bugun mahsulotlarimiz savdo tarmoqlari orqali minglab oilalar dasturxoniga, shuningdek, respublikamizdagi yetakchi non va qandolat korxonalari ishlab chiqarishiga yetib bormoqda.</p>
-        </div>
-        <div class="reveal">
-          <blockquote class="quote">
-            Har bir mahsulot bitta oddiy oʻlchov bilan baholanadi — uni oʻz oilamizga olib borishga tayyormizmi.
-            <cite>Aberno Group tamoyili</cite>
-          </blockquote>
-        </div>
+    <section class="feature">
+      <div class="feature__media feature__media--photo"><img src="assets/img/cover.jpg" alt="Bulut salfetkalari yogʻoch stol ustida" loading="lazy"></div>
+      <div class="feature__text reveal">
+        <p class="eyebrow">Aberno Group tamoyili</p>
+        <h2 class="h70">Oila mezoni</h2>
+        <p>Har bir mahsulot bitta oddiy oʻlchov bilan baholanadi — uni oʻz oilamizga olib borishga tayyormizmi.</p>
       </div>
     </section>
 
-    <section class="section section--soft">
-      <div class="container">
-        <div class="section-head section-head--center reveal">
-          <span class="eyebrow">Qadriyatlarimiz</span>
-          <h2>Bizni nima harakatga keltiradi</h2>
-        </div>
-        <div class="features features--4">
-          <div class="feature reveal">
-            <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-9.3-9A5.3 5.3 0 0 1 12 6a5.3 5.3 0 0 1 9.3 6C19 16.6 12 21 12 21Z"/></svg></div>
-            <h3>Oila mezoni</h3>
-            <p>Oʻz oilamizga olib bormaydigan mahsulotni bozorga chiqarmaymiz.</p>
-          </div>
-          <div class="feature reveal">
-            <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.4 8.3 8 9 4.6-.7 8-4 8-9V6Z"/><path d="m9 12 2 2 4-4"/></svg></div>
-            <h3>Qatʼiy nazorat</h3>
-            <p>Xomashyodan qadoqlashgacha har bir bosqich tekshiruvdan oʻtadi.</p>
-          </div>
-          <div class="feature reveal">
-            <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg></div>
-            <h3>Zamonaviy texnologiya</h3>
-            <p>Xalqaro standartlarga mos ishlab chiqarish liniyalari.</p>
-          </div>
-          <div class="feature reveal">
-            <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.1 7-12a7 7 0 0 0-14 0c0 5.9 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
-            <h3>Mahalliy ishlab chiqarish</h3>
-            <p>Oʻzbekistonda, oʻzbek oilalari va korxonalari uchun ishlab chiqaramiz.</p>
-          </div>
-        </div>
+    <section class="block block--soft">
+      <div class="block__head reveal">
+        <p class="eyebrow">Qadriyatlarimiz</p>
+        <h2 class="h50">Bizni nima harakatga keltiradi</h2>
+      </div>
+      <div class="tiles tiles--4">
+        <div class="tile reveal"><h3>Oila mezoni</h3><p>Oʻz oilamizga olib bormaydigan mahsulotni bozorga chiqarmaymiz.</p></div>
+        <div class="tile reveal"><h3>Qatʼiy nazorat</h3><p>Xomashyodan qadoqlashgacha har bir bosqich tekshiruvdan oʻtadi.</p></div>
+        <div class="tile reveal"><h3>Zamonaviy texnologiya</h3><p>Xalqaro standartlarga mos ishlab chiqarish liniyalari.</p></div>
+        <div class="tile reveal"><h3>Mahalliy ishlab chiqarish</h3><p>Oʻzbekistonda, oʻzbek oilalari va korxonalari uchun ishlab chiqaramiz.</p></div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container split split--top">
-        <div class="reveal">
-          <span class="eyebrow">Rivojlanish</span>
-          <h2>Qisqa tarix</h2>
-          <p>Kompaniya qisqa vaqt ichida ikki sanoat yoʻnalishida oʻz oʻrnini topdi va bugun yetakchi ishlab chiqaruvchilar qatoridan joy oldi.</p>
-        </div>
-        <!-- TODO: har bir bosqich uchun aniq sanalarni kiriting -->
-        <ol class="timeline reveal">
-          <li>
-            <span class="timeline__label">2021</span>
-            <h3>Aberno Group tashkil etildi</h3>
-            <p>Zamonaviy ishlab chiqarish kompaniyasi sifatida faoliyat boshlandi.</p>
-          </li>
-          <li>
-            <span class="timeline__label">Oziq-ovqat yoʻnalishi</span>
-            <h3>Margaritto va Smaylo</h3>
-            <p>Margarin va spred ishlab chiqarish yoʻlga qoʻyildi.</p>
-          </li>
-          <li>
-            <span class="timeline__label">Qogʻoz yoʻnalishi</span>
-            <h3>Bulut</h3>
-            <p>Sellyuloza va qogʻoz mahsulotlari ishlab chiqarish boshlandi.</p>
-          </li>
-          <li>
-            <span class="timeline__label">Bugun</span>
-            <h3>Bozor yetakchilaridan biri</h3>
-            <p>Mahsulotlarimiz savdo tarmoqlari va yetakchi non-qandolat korxonalariga yetib bormoqda.</p>
-          </li>
-        </ol>
+    <section class="block">
+      <div class="block__head reveal">
+        <p class="eyebrow">Rivojlanish</p>
+        <h2 class="h50">Qisqa tarix</h2>
+        <p>Kompaniya qisqa vaqt ichida ikki sanoat yoʻnalishida oʻz oʻrnini topdi.</p>
       </div>
+      <ol class="steps steps--4">
+        <li class="reveal"><h3>2021 — Aberno Group tashkil etildi</h3><p>Zamonaviy ishlab chiqarish kompaniyasi sifatida faoliyat boshlandi.</p></li>
+        <li class="reveal"><h3>Oziq-ovqat yoʻnalishi</h3><p>Margaritto margarini va Smaylo spredi ishlab chiqarish yoʻlga qoʻyildi.</p></li>
+        <li class="reveal"><h3>Qogʻoz yoʻnalishi</h3><p>Bulut brendi ostida sellyuloza va qogʻoz mahsulotlari ishlab chiqarish boshlandi.</p></li>
+        <li class="reveal"><h3>Bugun</h3><p>Mahsulotlarimiz savdo tarmoqlari va yetakchi non-qandolat korxonalariga yetib bormoqda.</p></li>
+      </ol>
     </section>
 
-    <section class="section" style="padding-top:0">
-      <div class="container">
-        <div class="cta reveal">
-          <div>
-            <h2>Brendlarimiz bilan tanishing</h2>
-            <p>Margaritto, Smaylo va Bulut — har biri oʻz yoʻnalishida ishonchli tanlov.</p>
-          </div>
-          <div class="cta__actions">
-            <a class="btn btn--primary" href="brands.html">Brendlar</a>
-          </div>
-        </div>
-      </div>
+    <section class="next">
+      <p class="eyebrow">Keyingisi</p>
+      <h2 class="h70">Brendlarimiz</h2>
+      <a class="btn" href="brands.html">Davom etish</a>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <a href="index.html" class="logo">
-            <svg class="logo__mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#fff"/><path d="M11 30 20 10l9 20" fill="none" stroke="#e0a526" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.5 23.5h11" stroke="#13233f" stroke-width="3" stroke-linecap="round"/></svg>
-            <span class="logo__text"><span class="logo__name">ABERNO</span><span class="logo__sub">GROUP</span></span>
-          </a>
-          <p class="footer-about">Oziq-ovqat hamda sellyuloza-qogʻoz sanoatida faoliyat yurituvchi zamonaviy oʻzbek ishlab chiqarish kompaniyasi.</p>
-        </div>
-        <div>
-          <h4>Kompaniya</h4>
-          <ul class="footer-links">
-            <li><a href="about.html">Biz haqimizda</a></li>
-            <li><a href="production.html">Ishlab chiqarish</a></li>
-            <li><a href="partners.html">Hamkorlik</a></li>
-            <li><a href="contact.html">Aloqa</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Brendlar</h4>
-          <ul class="footer-links">
-            <li><a href="margaritto.html">Margaritto</a></li>
-            <li><a href="smaylo.html">Smaylo</a></li>
-            <li><a href="bulut.html">Bulut</a></li>
-            <li><a href="brands.html">Barcha mahsulotlar</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Aloqa</h4>
-          <ul class="footer-links">
-            <!-- TODO: haqiqiy aloqa maʼlumotlarini kiriting -->
-            <li><a href="tel:+998000000000">+998 (00) 000-00-00</a></li>
-            <li><a href="mailto:info@aberno.uz">info@aberno.uz</a></li>
-            <li>Oʻzbekiston</li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© <span data-year>2026</span> Aberno Group. Barcha huquqlar himoyalangan.</span>
-        <span>Oʻzbekistonda ishlab chiqarilgan</span>
-      </div>
-    </div>
-  </footer>
-
-  <button class="to-top" type="button" aria-label="Yuqoriga"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+  <footer class="site-footer" data-footer></footer>
 </body>
 </html>
